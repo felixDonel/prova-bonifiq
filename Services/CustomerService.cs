@@ -20,6 +20,7 @@ namespace ProvaPub.Services
 
             if (!CanPurchaseInThisMonth(customerId))
                 return false;
+
             if (_customerRepository.Havepurchasedbefore(customerId) && purchaseValue > 100)
                 return false;
 

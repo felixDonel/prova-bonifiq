@@ -12,6 +12,7 @@ namespace ProvaPub.Repository
 		public TestDbContext(DbContextOptions<TestDbContext> options) : base(options)
 		{
 		}
+		public TestDbContext() { }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
