@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ProvaPub.Models.Interfaces;
 using ProvaPub.Repository;
 using ProvaPub.Services;
 
@@ -14,7 +15,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<RandomService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CustomerService>();
+
 builder.Services.AddScoped<TestDbContext>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 builder.Services.AddDbContext<TestDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("ctx")));
 var app = builder.Build();
