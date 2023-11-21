@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ProvaPub.Models;
 using ProvaPub.Models.Interfaces;
 using ProvaPub.Repository;
 using ProvaPub.Services;
@@ -15,6 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<RandomService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<OrderService>();
+builder.Services.AddScoped<PixPayment>();
+builder.Services.AddScoped<CreditCardPayment>();
+builder.Services.AddScoped<PaypalPayment>();
 
 builder.Services.AddScoped<TestDbContext>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();

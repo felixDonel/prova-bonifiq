@@ -18,7 +18,7 @@ namespace ProvaPub.Services
             _dbSet = _ctx.Set<T>();
         }
 
-        public virtual Items<T> ListItems(int page) 
+        public async virtual Task<Items<T>> ListItems(int page) 
         { 
             if(page < 1)
                 page = 1;
@@ -26,7 +26,7 @@ namespace ProvaPub.Services
             int skip = (page - 1) * pageSize;
             bool hasNext = (skip + pageSize) < totalSize;
 
-            List<T> listItems = _dbSet.OrderBy(p => p.Id).Skip(skip).Take(pageSize).ToList();
+            List<T> listItems = await _dbSet.OrderBy(p => p.Id).Skip(skip).Take(pageSize).ToListAsync();
 
             return new Items<T>() { HasNext = hasNext, TotalCount = 10, Item = listItems };
         }
